@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message</title>
+    <style>
+        body {
+            font-family: 'Brush Script MT', cursive;
+            text-align: center;
+            background-color: #ffdde1;
+            color: #d63384;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 127, 0.5);
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+            position: relative;
+        }
+        button {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .yes {
+            background-color: #ff66b2;
+            color: white;
+            box-shadow: 2px 2px 10px rgba(255, 105, 180, 0.5);
+        }
+        .no {
+            background-color: #ff4d4d;
+            color: white;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ILYSM</h1>
+    
+    <div class="button-container">
+        <button class="yes" onclick="alert('Yay! I love you too! ❤️')">ILY too</button>
+        <button class="no" id="noButton" onmouseover="moveButton()">No, go to hell</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            let button = document.getElementById('noButton');
+            let container = document.querySelector('.button-container');
+
+            let maxWidth = window.innerWidth - button.offsetWidth;
+            let maxHeight = window.innerHeight - button.offsetHeight;
+
+            let newX, newY;
+            do {
+                newX = Math.random() * maxWidth;
+                newY = Math.random() * maxHeight;
+            } while (
+                newY < container.getBoundingClientRect().bottom + 50
+            );
+
+            button.style.position = "absolute";
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
+    </script>
+
+</body>
+</html>
